@@ -25,7 +25,7 @@ async function fetchMoves() { //funcion que trae los datos de TODOS los movimien
 
 fetchMoves()
 
-function createMove(movesArray) { //funcion que imprime TODOS los movimientos con su nombre/presición/tipo
+function createMove(movesArraysortedByCat,movesArraySortedByAssi) { //funcion que imprime TODOS los movimientos con su nombre/presición/tipo
     let move = "" //creo la variable que va a almacenar TODOS los templates
     movesArray.forEach(everyMove => //recorro el array que entra como parámetro para guardar en cada ciclo el template correspondiente
         move += `
@@ -61,8 +61,7 @@ function createMoveMinMax(movesArray) { //funcion que imprime TODOS los movimien
             </tr>
             `
         }
-    }
-        )
+    })
     document.querySelector("#accuracyTable").innerHTML += move //imprimo en el selector correspondiente
 }
 
