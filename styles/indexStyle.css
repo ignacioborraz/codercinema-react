@@ -25,16 +25,17 @@ h1 {
 }
 
 a {
-    color: rgb(190 ,50 ,80);
-    background-color: rgb(40, 40, 40);
+    color: rgb(40, 40, 40);
+    background-color: rgb(190, 50, 80);
+    font-size: 20px;
     font-weight: 600;
     text-decoration: none;
     padding: 10px 30px !important;
     margin-bottom: 20px !important;
 }
 a:hover {
-    color: rgb(190 ,50 ,80);
-    background-color: rgb(50, 50, 50);
+    color: rgb(30, 30, 30);
+    background-color: rgb(200, 60, 90);
 }
 
 @media only screen and (max-width: 576px){
