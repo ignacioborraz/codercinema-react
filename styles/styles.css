@@ -146,10 +146,17 @@ option {
     height: 180px;
 }
 
-label , .cardDetail {
+label , .cardDetail  , .contact {
     background-color: rgba(40, 40, 40);
     color: rgb(190 ,50 ,80);
     font-weight: 600;
+}
+
+.contactForm {
+    background-color: white;
+    color: rgba(40, 40, 40);
+    font-weight: 600;
+    text-decoration: none;
 }
 
 textarea {

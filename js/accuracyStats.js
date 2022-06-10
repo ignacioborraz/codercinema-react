@@ -87,10 +87,10 @@ function createProm(movesArray) { //funcion que imprime la tabla promedio de la 
             move += `
             <tr class="table-light d-flex justify-content-center">
                 <td scope="col" class="col-1 d-flex justify-content-center align-items-center text-center" colspan="1">${everyMove.type}</td>
-                <td scope="col" class="col-1 d-flex flex-column justify-content-center align-items-center text-center" colspan="1">${everyMove.moves.map(everyMove => `<span>${everyMove}</span>`)}</td>
-                <td scope="col" class="col-1 d-flex flex-column justify-content-center align-items-center text-center" colspan="1">${everyMove.accuracyStats.map(everyStat => `<span>${everyStat}</span>`)}</td>
+                <td scope="col" class="col-2 d-flex flex-column justify-content-center align-items-center text-center" colspan="1">${everyMove.moves.join('<br>')}</td>
+                <td scope="col" class="col-1 d-flex flex-column justify-content-center align-items-center text-center" colspan="1">${everyMove.accuracyStats.join('<br>')}</td>
                 <td scope="col" class="col-1 d-flex justify-content-center align-items-center text-center" colspan="1">${everyMove.moves.length}</td>
-                <td scope="col" class="col-1 d-flex justify-content-center align-items-center text-center" colspan="1">accuracy prom</td>
+                <td scope="col" class="col-1 d-flex justify-content-center align-items-center text-center" colspan="1">${everyMove.accuracyProm.toFixed(2)}</td>
             </tr>
             `
     })
@@ -111,9 +111,13 @@ function filteredMoves (moves) { //funcion que filtrará los datos de un tipo de
     arrayTypes = [...arrayTypes]
     //console.log(arrayTypes)
     moves = arrayTypes.map(everyType => {
+        let accuracyStats = moves.filter(everyMove => everyMove.type.name===everyType).map(everyMove => everyMove.accuracy)
+        let sum = 0
+        accuracyStats.forEach(everyStat => sum += everyStat)
         let data = {
             type: everyType,
-            accuracyStats: moves.filter(everyMove => everyMove.type.name===everyType).map(everyMove => everyMove.accuracy),
+            accuracyStats: accuracyStats,
+            accuracyProm: sum/accuracyStats.length,
             moves: moves.filter(everyMove => everyMove.type.name===everyType).map(everyMove => everyMove.name)
         }
         return data
