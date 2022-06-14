@@ -199,6 +199,13 @@ textarea {
     color: rgb(210, 210, 210)
 }
 
+.cardPkm {
+    background-color: white;
+    width: 200px;
+    height: 150px;
+    margin: 10px !important;
+}
+
 @media only screen and (max-width: 576px){
 
     h1 {
