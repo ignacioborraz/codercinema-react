@@ -13,8 +13,8 @@ async function fetchPkm(id) { //funcion que trae los datos de UN SOLO pkm
     return data
 }
 
-async function fetchPokems() { //funcion que trae los datos de TODOS los pkm (25)
-    for (let i=1; i<=151; i++) { //iteracion de la funcion que me trae los datos de UN SOLO pkm
+async function fetchPokems(n1,n2) { //funcion que trae los datos de TODOS los pkm del intervalo
+    for (let i=n1; i<=n2; i++) { //iteracion de la funcion que me trae los datos de UN SOLO pkm
         let data = await fetchPkm(i) //consumo la api
         pkm.push(data) //pusheo los datos en un array
     }
@@ -22,7 +22,7 @@ async function fetchPokems() { //funcion que trae los datos de TODOS los pkm (25
     createPkm(pkm)
 }
 
-fetchPokems()
+fetchPokems(1,151)
 
 function createPkm(arrayPkm) { //funcion que imprime TODOS los pkm
     let innerPkm = "" //seteo la variable que va a almacenar TODOS los templates
@@ -37,22 +37,11 @@ function createPkm(arrayPkm) { //funcion que imprime TODOS los pkm
     document.querySelector("#pkmTable").innerHTML =innerPkm //imprimo en el selector correspondiente
 }
 
-async function fetchPokemsToFilter(event) { //funcion que trae los datos de los pkm filtrados
-    pkm = []
-    search = event.target.value
-    for (let i=1; i<=151; i++) { //iteracion de la funcion que me trae los datos de UN SOLO pkm
-        if (search) {
-            let data = await fetchPkm(i) //consumo la api
-            if (data.name.toLowerCase().startsWith(search.toLowerCase().trim())) { //realizo la comparación
-                pkm.push(data) //pusheo los datos en un array    
-            }
-        } else {
-            let data = await fetchPkm(i) //consumo la api
-            pkm.push(data) //pusheo los datos en un array
-        }
-    }
-    console.log(pkm)
-    createPkm(pkm)
+async function pkmToFilter(event) { //funcion que trae los datos de los pkm filtrados
+    let search = event.target.value
+    let filter = pkm.filter(everyPkm => everyPkm.name.toLowerCase().startsWith(search.toLowerCase().trim()))
+    console.log(filter)
+    createPkm(filter)
 }
 
-document.querySelector("#search").addEventListener("keyup",fetchPokemsToFilter)
+document.querySelector("#search").addEventListener("keyup",pkmToFilter)
