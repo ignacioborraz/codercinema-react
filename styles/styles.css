@@ -91,6 +91,10 @@ h2 , .generation {
     color: rgb(140, 50, 70);
 }
 
+.labelGeneration {
+    width: 300px !important;
+}
+
 p , h3 {
     margin: 0 !important;
     display: flex;

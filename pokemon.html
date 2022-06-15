@@ -25,9 +25,20 @@
         </header>
         <main class="d-flex flex-column flex-grow-1 w-100">
             <section class="d-flex flex-column justify-content-center align-items-center w-100">
-                <input type="checkbox" class="d-flex justify-content-center align-items-center w-100 generation" id="g1" value="1st generation">
-                <input type="checkbox" class="d-flex justify-content-center align-items-center w-100 generation" id="g2" value="2nd generation">
-                <input type="checkbox" class="d-flex justify-content-center align-items-center w-100 generation" id="g3" value="3rd generation">
+                <form>
+                    <fieldset class="d-flex generation">
+                        <input type="radio" class="d-flex justify-content-center align-items-center w-100" name="gen" value="g1" id="g1">
+                        <label class="labelGeneration" id="g1">1st generation</label>
+                    </fieldset>
+                    <fieldset class="d-flex generation">
+                        <input type="radio" class="d-flex justify-content-center align-items-center w-100" name="gen" value="g2" id="g2">
+                        <label class="labelGeneration" id="g2">2nd generation</label>
+                    </fieldset>
+                    <fieldset class="d-flex generation">
+                        <input type="radio" class="d-flex justify-content-center align-items-center w-100" name="gen" value="g3" id="g3">
+                        <label class="labelGeneration" id="g3">3rd generation</label>
+                    </fieldset>
+                </form>
                 <input class="m-3 text-center" id="search">
                 <div class="d-flex flex-wrap justify-content-center align-items-center w-100" id="pkmTable"></div>
             </section>
