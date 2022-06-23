@@ -83,10 +83,15 @@ a {
     text-decoration: none !important;
 }
 
-h2 , .generation {
+h2 {
     height: 35px;
     font-size: 20px;
     font-weight: 600;
+    background-color: rgba(210, 210, 210, 0.5);
+    color: rgb(140, 50, 70);
+}
+
+.generation {
     background-color: rgba(210, 210, 210, 0.5);
     color: rgb(140, 50, 70);
 }

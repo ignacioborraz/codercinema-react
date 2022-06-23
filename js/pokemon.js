@@ -6,9 +6,31 @@ var pkm = [] //array que va a contener los pkm
 var searchFilter = "" //variable que va a contener el valor del input
 var generationFilter = "" //variable que va a contener el valor del radius
 
-async function fetchPokems() { //funcion que trae los datos de TODOS los pkm del intervalo
+var generations = [
+    {gen: '1st gen', id: "g1", starters: [1,9]},
+    {gen: '2nd gen', id: "g2", starters: [152,160]},
+    {gen: '3rd gen', id: "g3", starters: [252,260]},
+    {gen: '4th gen', id: "g4", starters: [387,395]}
+]
+
+function createOptions(options) {
+    let innerOptions = ""
+    options.forEach((everyOption) => {
+            innerOptions += `
+            <fieldset class="d-flex">
+                <input type="radio" class="generation" name="gen" value=${everyOption.id} id=${everyOption.id}>
+                <label class="labelGeneration" for=${everyOption.id}>${everyOption.gen}</label>
+            </fieldset>
+            `
+    })
+    document.querySelector("#options").innerHTML =innerOptions
+}
+
+createOptions(generations)
+
+async function fetchPokems(n1,n2) { //funcion que trae los datos de TODOS los pkm del intervalo
     let pokemons = []
-    for (let i=1; i<=386; i++) { //iteracion de la funcion que me trae los datos de UN SOLO pkm
+    for (let i=n1; i<=n2+1; i++) { //iteracion de la funcion que me trae los datos de UN SOLO pkm
         (await fetch(urlPkm+i)).json().then(everyPkm => //consumo la api
             pokemons.push({ //pusheo los datos en un array
                 order: everyPkm.order,
@@ -17,12 +39,12 @@ async function fetchPokems() { //funcion que trae los datos de TODOS los pkm del
             })
         )
     }
-    //console.log(pokemons)
+    console.log(pokemons)
     createPkm(pokemons)
     return pokemons
 }
 
-pkm = await fetchPokems()
+pkm = await fetchPokems(1,9)
 
 function inputFilter(event) { //funcion que trae los datos de los pkm filtrados
     searchFilter = event.target.value
@@ -39,28 +61,31 @@ function checkBoxGen(event) {
     if (searchFilter) {
         switch (generationFilter) {
             case 'g1':
-                pkm = fetchPokems(1,151).filter(everyPkm => everyPkm.name.toLowerCase().startsWith(searchFilter.toLowerCase().trim()))
+                pkm = fetchPokems(1,9).filter(everyPkm => everyPkm.name.toLowerCase().startsWith(searchFilter.toLowerCase().trim()))
                 break;
             case 'g2':
-                pkm = fetchPokems(152,251).filter(everyPkm => everyPkm.name.toLowerCase().startsWith(searchFilter.toLowerCase().trim()))
+                pkm = fetchPokems(152,160).filter(everyPkm => everyPkm.name.toLowerCase().startsWith(searchFilter.toLowerCase().trim()))
                 break;
             case 'g3':
-                pkm = fetchPokems(252,386).filter(everyPkm => everyPkm.name.toLowerCase().startsWith(searchFilter.toLowerCase().trim()))
+                pkm = fetchPokems(252,260).filter(everyPkm => everyPkm.name.toLowerCase().startsWith(searchFilter.toLowerCase().trim()))
+                break;
+            case 'g4':
+                pkm = fetchPokems(387,395).filter(everyPkm => everyPkm.name.toLowerCase().startsWith(searchFilter.toLowerCase().trim()))
                 break;
         }
     } else {
         switch (generationFilter) {
             case 'g1':
-                pkm = fetchPokems(1,151)
+                pkm = fetchPokems(1,9)
                 break;
             case 'g2':
-                pkm = fetchPokems(152,251)
+                pkm = fetchPokems(152,160)
                 break;
             case 'g3':
-                pkm = fetchPokems(252,386)
+                pkm = fetchPokems(252,260)
                 break;
-            default:
-                pkm = fetchPokems(1,151)
+            case 'g4':
+                pkm = fetchPokems(387,395)
                 break;
         }
     }
@@ -69,6 +94,7 @@ function checkBoxGen(event) {
 document.querySelector("#g1").addEventListener("click",checkBoxGen)
 document.querySelector("#g2").addEventListener("click",checkBoxGen)
 document.querySelector("#g3").addEventListener("click",checkBoxGen)
+document.querySelector("#g4").addEventListener("click",checkBoxGen)
 
 function createPkm(arrayPkm) { //funcion que imprime TODOS los pkm
     let innerPkm = "" //seteo la variable que va a almacenar TODOS los templates
