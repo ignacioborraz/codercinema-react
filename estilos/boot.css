@@ -1,0 +1,12 @@
+h1 {
+  background-color: purple;
+  /* las clases de bootstrap NO se pueden pisar!!! */
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: rgb(255, 182, 182);
+}
