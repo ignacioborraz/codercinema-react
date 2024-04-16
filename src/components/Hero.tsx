@@ -1,6 +1,6 @@
 import styles from "./Hero.module.css";
 
-export default function Hero({first,second}) {
+export default function Hero({ first, second }) {
   return (
     <>
       <section className={styles["hero-section"]}>
