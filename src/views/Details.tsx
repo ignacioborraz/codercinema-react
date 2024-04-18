@@ -5,7 +5,7 @@ import NavBar from "../components/NavBar";
 import products from "../../public/products";
 import Hero from "../components/Hero";
 import ProductCard from "../components/ProductCard";
-import Thumbnail from "../components/Thumbnail";
+import Thumbs from "../components/Thumbs";
 import Description from "../components/Description";
 import Checkout from "../components/Checkout";
 
@@ -21,7 +21,7 @@ function Details() {
         <div className={styles["details-container"]}>
           {product && (
             <div id="details" className={styles["columns-container"]}>
-              <Thumbnail product={product} />
+              <Thumbs product={product} />
               <Description product={product} />
               <Checkout product={product} />
             </div>
