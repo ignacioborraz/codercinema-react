@@ -159,7 +159,7 @@ const prod11 = new Product(
   false
 );
 const prod12 = new Product(
-  "A1B2C3",
+  "A1B2C4",
   "MacBook 12'",
   "Experience the power of creativity with the MacBook Pro 13'4. Featuring 8GB of RAM and 512GB of storage, this laptop provides the performance and storage capacity needed for demanding tasks. The sleek design in silver and space gray adds a touch of sophistication. The high-resolution Retina display brings your visuals to life, whether you're editing photos, creating videos, or simply browsing the web. With the latest technology and a lightweight build, the MacBook Pro 13'4 is the perfect companion for professionals and creative individuals alike.",
   500000,
@@ -296,7 +296,6 @@ const products = [
   prod10,
   prod12,
   prod3,
-  prod14,
   prod15,
   prod5,
   prod17,
