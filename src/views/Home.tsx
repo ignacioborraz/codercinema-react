@@ -3,7 +3,7 @@ import Hero from "../components/Hero";
 import NavBar from "../components/NavBar";
 import ProductCard from "../components/ProductCard";
 import products from "../assets/products";
-import Product from "../interfaces/Prod";
+import Product from "../interfaces/Product";
 
 function Home() {
   return (
@@ -21,8 +21,8 @@ function Home() {
               id={each.id}
               title={each.title}
               price={each.price}
-              color={each.colors[0]}
-              image={each.images[0]}
+              colors={each.colors}
+              images={each.images}
             />
           ))}
         </div>

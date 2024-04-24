@@ -1,11 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import Product from "../interfaces/product";
+import Product from "../interfaces/Product";
+import ProductProp from "../interfaces/ProductProp";
 
-interface Props {
-  product: Product;
-}
-
-export default function Checkout(props: Props) {
+export default function Checkout(props: ProductProp) {
   const { product } = props;
   const [quantity, setQuantity] = useState(1);
   const [button, setButton] = useState(false);

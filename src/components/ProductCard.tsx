@@ -1,8 +1,8 @@
-import Product from "../interfaces/ProductCard";
+import Product from "../interfaces/Product";
 import { Link } from "react-router-dom";
 
 export default function ProductCard(props: Product) {
-  const { id, title, price, color, image } = props;
+  const { id, title, price, colors, images } = props;
   return (
     <Link
       className="bg-[#f0f0f0] text-[#383838] rounded-md w-[250px] m-[15px] no-underline"
@@ -10,14 +10,14 @@ export default function ProductCard(props: Product) {
     >
       <img
         className="w-full h-[250px] object-cover object-center rounded-t-md"
-        src={image}
+        src={images[0]}
         alt={title}
       />
       <div className="p-[20px]">
         <span className="text-[20px] font-bold leading-[25px] block">
           {title}
         </span>
-        <span className="text-[12px] text-[#383838] mb-[5px]">{color}</span>
+        <span className="text-[12px] text-[#383838] mb-[5px]">{colors[0]}</span>
         <div className="flex my-[5px] justify-between items-center">
           <span className="text-[20px] font-bold text-[#428f13]">
             $ {price}
