@@ -2,8 +2,7 @@ interface Props {
   total: number;
 }
 
-export default function CartResume(props: Props) {
-  const { total } = props;
+export default function CartResume({ total }: Props) {
   return (
     <div className="w-[340px] h-[220px] flex flex-col justify-between rounded-md p-[30px] m-[10px] bg-[#f2f2f2]">
       <div className="flex-grow flex flex-col justify-between">

@@ -3,8 +3,7 @@ interface Props {
   second: string;
 }
 
-export default function Hero(props: Props) {
-  const { first, second } = props;
+export default function Hero({ first, second }: Props) {
   return (
     <>
       <section className="h-[200px] flex justify-center bg-hero bg-cover bg-center">

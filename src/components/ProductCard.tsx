@@ -1,8 +1,13 @@
 import Product from "../interfaces/Product";
 import { Link } from "react-router-dom";
 
-export default function ProductCard(props: Product) {
-  const { id, title, price, colors, images } = props;
+export default function ProductCard({
+  id,
+  title,
+  price,
+  colors,
+  images,
+}: Product) {
   return (
     <Link
       className="bg-[#f0f0f0] text-[#383838] rounded-md w-[250px] m-[15px] no-underline"

@@ -2,8 +2,7 @@ import { useRef } from "react";
 import Product from "../interfaces/Product";
 import ProductProp from "../interfaces/ProductProp";
 
-export default function CartCard(props: ProductProp) {
-  const { product } = props;
+export default function CartCard({ product }: ProductProp) {
   const { id, title, price, colors, images, description, units } = product;
   const unitsToBuy = useRef();
   const manageUnits = () => {

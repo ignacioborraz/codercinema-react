@@ -3,8 +3,7 @@ interface Props {
   link: string;
 }
 
-export default function NavButton(props: Props) {
-  const { title, link } = props;
+export default function NavButton({ title, link }: Props) {
   return (
     <>
       <li className="list-none">
