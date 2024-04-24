@@ -1,19 +1,35 @@
-import styles from "./ProductCard.module.css";
+import Product from "../interfaces/product";
 import { Link } from "react-router-dom";
 
-export default function ProductCard(props) {
-  const { id, title, price, color, image } = props;
+interface Props {
+  product: Product;
+}
+
+export default function ProductCard(props: Props) {
+  const { product } = props;
+  const { id, title, price, colors, images } = product;
   return (
-    <Link className={styles["product-card"]} to={"/details/" + id}>
-      <img className={styles["product-img"]} src={image} alt={title} />
-      <div className={styles["product-info"]}>
-        <span className={styles["product-title"]}>{title}</span>
-        <span className={styles["product-description"]}>{color}</span>
-        <div className={styles["product-price-block"]}>
-          <span className={styles["product-price"]}>{price}</span>
-          <span className={styles["product-discount"]}>50% Off</span>
+    <Link
+      className="bg-[#f0f0f0] text-[#383838] rounded-md w-[250px] m-[15px] no-underline"
+      to={"/details/" + id}
+    >
+      <img
+        className="w-full h-[250px] object-cover object-center rounded-t-md"
+        src={images[0]}
+        alt={title}
+      />
+      <div className="p-[20px]">
+        <span className="text-[20px] font-bold leading-[25px] block">
+          {title}
+        </span>
+        <span className="text-[12px] text-[#383838] mb-[5px]">{colors[0]}</span>
+        <div className="flex my-[5px] justify-between items-center">
+          <span className="text-[20px] font-bold text-[#428f13]">
+            $ {price}
+          </span>
+          <span className="text-[12px]">50% Off</span>
         </div>
-        <div className={styles["product-tax-policy"]}>
+        <div className="text-[10px]">
           Includes Country tax and AFIP collection
         </div>
       </div>

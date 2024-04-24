@@ -1,4 +1,10 @@
-export default function Hero({ first, second }) {
+interface Props {
+  first: string;
+  second: string;
+}
+
+export default function Hero(props: Props) {
+  const { first, second } = props;
   return (
     <>
       <section className="h-[200px] flex justify-center bg-hero bg-cover bg-center">

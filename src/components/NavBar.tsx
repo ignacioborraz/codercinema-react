@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 export default function NavBar() {
   return (
     <header className="w-full min-h-[150px] bg-[#ff3b3c] p-[20px 20px 0 20px] flex flex-col items-center">
-      <div className="w-full flex flex-col justify-between items-center flex-grow 
+      <div
+        className="w-full flex flex-col justify-between items-center flex-grow 
         md:flex-row
         lg:w-[1024px]
-      ">
+      "
+      >
         <Link
           to="/"
           className="w-full md:w-1/3 flex items-center justify-center md:justify-start flex-grow pt-2 md:p-0"
@@ -27,9 +29,11 @@ export default function NavBar() {
             id="search"
           />
         </form>
-        <ul className="w-full md:w-1/3 flex items-center flex-grow justify-center pb-2
+        <ul
+          className="w-full md:w-1/3 flex items-center flex-grow justify-center pb-2
           md:justify-end md:py-0
-        ">
+        "
+        >
           <li id="facebook" className="w-[50px] h-[50px] list-none">
             <a className="w-[50px] h-[50px]" href="https://facebook.com">
               <img

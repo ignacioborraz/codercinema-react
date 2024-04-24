@@ -1,4 +1,11 @@
-export default function Description({ product }) {
+import Product from "../interfaces/product";
+
+interface Props {
+  product: Product;
+}
+
+export default function Description(props: Props) {
+  const { product } = props;
   return (
     <section className="w-[340px] p-[10px] m-[10px] flex flex-col">
       <h1 className="text-[28px] font-bold mt-0 text-wrap">{product.title}</h1>

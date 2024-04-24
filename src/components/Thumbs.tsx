@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
+import Product from "../interfaces/product";
 
-export default function Thumbnail({ product }) {
+interface Props {
+  product: Product;
+}
+
+export default function Thumbs(props: Props) {
+  const { product } = props;
   const [thumb, setThumb] = useState(product.images[0] || "/mock1.jpg");
   useEffect(() => setThumb(product.images[0]), [product.id]);
   return (

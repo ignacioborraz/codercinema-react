@@ -1,4 +1,10 @@
-export default function NavButton({ title, link }) {
+interface Props {
+  title: string;
+  link: string;
+}
+
+export default function NavButton(props: Props) {
+  const { title, link } = props;
   return (
     <>
       <li className="list-none">

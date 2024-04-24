@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
+import products from "../assets/products";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import products from "../../public/products";
 import Hero from "../components/Hero";
 import ProductCard from "../components/ProductCard";
 import Thumbs from "../components/Thumbs";
@@ -27,16 +27,12 @@ function Details() {
           )}
           <div className="w-full flex flex-col justify-center items-center">
             <h2 className="text-[40px]">Week Sale</h2>
-            <div id="product-container" className="flex flex-col md:flex-row flex-wrap items-center justify-between w-full lg:w-[1024px]">
+            <div
+              id="product-container"
+              className="flex flex-col md:flex-row flex-wrap items-center justify-between w-full lg:w-[1024px]"
+            >
               {onsale.map((each) => (
-                <ProductCard
-                  key={each.id}
-                  id={each.id}
-                  title={each.title}
-                  price={each.price}
-                  color={each.colors[0]}
-                  image={each.images[0]}
-                />
+                <ProductCard key={each.id} product={each} />
               ))}
             </div>
           </div>
