@@ -9,8 +9,8 @@ import { useDispatch } from "react-redux";
 import { calculateTotal } from "../store/actions/products";
 
 function Cart() {
-  const dispatch = useDispatch();
   const [productsOnCart, setProductsOnCart] = useState<Product[]>([]);
+  const dispatch = useDispatch();
   useEffect(() => {
     const products = localStorage.getItem("cart");
     if (products) {
@@ -28,7 +28,7 @@ function Cart() {
             <CartCard key={each.id} product={each} />
           ))}
         </section>
-        <CartResume total={90} />
+        <CartResume />
       </main>
       <Footer />
     </>

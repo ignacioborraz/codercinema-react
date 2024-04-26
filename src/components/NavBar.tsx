@@ -1,16 +1,21 @@
 import { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import NavButton from "./NavButton";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { captureText } from "../store/actions/products";
 
 export default function NavBar() {
+  const location = useLocation();
+  const pathname = location.pathname;
   const text = useRef();
+  const textStore = useSelector((store) => store.products.text);
   const dispatch = useDispatch();
   const setText = () => {
-    dispatch(captureText({
-      text: text.current?.value
-    }));
+    dispatch(
+      captureText({
+        text: text.current?.value,
+      })
+    );
   };
   return (
     <header className="w-full min-h-[150px] bg-[#ff3b3c] p-[20px 20px 0 20px] flex flex-col items-center">
@@ -32,14 +37,17 @@ export default function NavBar() {
           />
         </Link>
         <form className="w-full md:w-1/3 flex items-center flex-grow justify-center py-2 md:py-0">
-          <input
-            className="h-[60px] border-0 rounded-[15px] w-full p-[10px] my-0 mx-[20px] text-[14px] text-center"
-            type="text"
-            placeholder="Search"
-            id="search"
-            ref={text}
-            onChange={setText}
-          />
+          {pathname === "/" && (
+            <input
+              className="h-[60px] border-0 rounded-[15px] w-full p-[10px] my-0 mx-[20px] text-[14px] text-center"
+              type="text"
+              placeholder="Search"
+              id="search"
+              ref={text}
+              defaultValue={textStore}
+              onChange={setText}
+            />
+          )}
         </form>
         <ul
           className="w-full md:w-1/3 flex items-center flex-grow justify-center pb-2
