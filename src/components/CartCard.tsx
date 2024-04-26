@@ -1,9 +1,12 @@
 import { useRef } from "react";
 import Product from "../interfaces/Product";
 import ProductProp from "../interfaces/ProductProp";
+import { useDispatch } from "react-redux";
+import { calculateTotal } from "../store/actions/products";
 
 export default function CartCard({ product }: ProductProp) {
   const { id, title, price, colors, images, description, units } = product;
+  const dispatch = useDispatch();
   const unitsToBuy = useRef();
   const manageUnits = () => {
     const productsOnCart = localStorage.getItem("cart");
@@ -15,6 +18,7 @@ export default function CartCard({ product }: ProductProp) {
     if (one) {
       one.units = Number(unitsToBuy.current.value);
       localStorage.setItem("cart", JSON.stringify(products));
+      dispatch(calculateTotal({ products }));
     }
   };
   return (

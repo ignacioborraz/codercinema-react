@@ -5,13 +5,17 @@ import Hero from "../components/Hero";
 import CartCard from "../components/CartCard";
 import CartResume from "../components/CartResume";
 import Product from "../interfaces/Product";
+import { useDispatch } from "react-redux";
+import { calculateTotal } from "../store/actions/products";
 
 function Cart() {
   const [productsOnCart, setProductsOnCart] = useState<Product[]>([]);
+  const dispatch = useDispatch();
   useEffect(() => {
     const products = localStorage.getItem("cart");
     if (products) {
       setProductsOnCart(JSON.parse(products));
+      dispatch(calculateTotal({ products: JSON.parse(products) }));
     }
   }, []);
   return (
@@ -24,7 +28,7 @@ function Cart() {
             <CartCard key={each.id} product={each} />
           ))}
         </section>
-        <CartResume total={90} />
+        <CartResume />
       </main>
       <Footer />
     </>
